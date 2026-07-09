@@ -1,0 +1,23 @@
+:root{
+    --bg:#19171b;
+    --surface:#252628;
+    --gold:#d29f22;
+    --crimson:#5d0018;
+    --text:#f5f5f5;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+*{
+    box-sizing:border-box;
+}
