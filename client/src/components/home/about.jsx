@@ -4,8 +4,8 @@ const About = () => {
       id="about"
       className="min-h-screen flex items-center"
     >
-      <div className="mx-auto w-full max-w-7xl px-10 lg:px-16">
-        <div className="ml-32 lg:ml-40 grid gap-20 lg:grid-cols-[1fr_0.9fr] items-center">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-16">
+        <div className="lg:ml-40 grid gap-20 lg:grid-cols-[1fr_0.9fr] items-center">
 
           {/* Left Side */}
           <div className="space-y-8">
@@ -14,7 +14,7 @@ const About = () => {
               About Me
             </p>
 
-            <h2 className="text-5xl font-bold text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Crafting modern web experiences with clean architecture.
             </h2>
 
@@ -39,7 +39,7 @@ const About = () => {
               </p>
 
               <h3 className="mt-4 text-2xl font-semibold text-white">
-                B.E. Computer Engineering
+                B.E. IT Engineering
               </h3>
 
               <p className="mt-2 text-gray-400">

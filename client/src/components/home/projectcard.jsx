@@ -1,14 +1,20 @@
 const ProjectCard = ({ project, featured = false }) => {
+
+    if (!project) return null;
   return (
     <div
       className={`group overflow-hidden rounded-[30px] border border-[#d29f22]/20 bg-[#252628]/45 backdrop-blur-xl transition-all duration-300 hover:border-[#d29f22]/50 ${
-        featured ? "grid lg:grid-cols-2" : ""
+        featured
+  ? "grid grid-cols-1 lg:grid-cols-2"
+  : ""
       }`}
     >
       {/* Project Image */}
                 <div
             className={`relative overflow-hidden ${
-                featured ? "h-[280px]" : "h-[180px]"
+                featured
+                  ? "h-[220px] sm:h-[260px] lg:h-[280px]"
+                  : "h-[180px]"
             } bg-gradient-to-br from-[#1f2022] to-[#2b2d31]`}
             >
 
@@ -28,7 +34,7 @@ const ProjectCard = ({ project, featured = false }) => {
                 PROJECT
                 </p>
 
-                <h3 className="mt-2 text-2xl font-bold text-white">
+                <h3 className="text-2xl lg:text-3xl font-bold text-white">
                 {project.title}
                 </h3>
             </div>
@@ -54,7 +60,7 @@ const ProjectCard = ({ project, featured = false }) => {
 
           {/* Tech Stack */}
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-2">
 
             {project.tech.map((tech) => (
               <span
@@ -70,7 +76,7 @@ const ProjectCard = ({ project, featured = false }) => {
         </div>
 
         {/* Buttons */}
-            <div className="mt-10 flex gap-4">
+            <div className="mt-8 flex flex-wrap gap-3">
 
             <a
                 href={project.github}
