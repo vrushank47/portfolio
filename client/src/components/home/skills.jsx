@@ -15,55 +15,55 @@ import "../../styles/animations.css";
 
 const skills = [
   {
-    icon: <FaReact className="text-3xl text-cyan-400" />,
+    icon: <FaReact className="text-lg sm:text-2xl lg:text-3xl text-cyan-400" />,
     position: "top-[8%] left-[12%]",
     delay: "1s",
     duration: "3.2s",
   },
   {
-    icon: <FaNodeJs className="text-3xl text-green-500" />,
+    icon: <FaNodeJs className="text-lg sm:text-2xl lg:text-3xl text-green-500" />,
     position: "top-[12%] right-[14%]",
     delay: "2s",
     duration: "5.2s",
   },
   {
-    icon: <SiExpress className="text-3xl text-white" />,
+    icon: <SiExpress className="text-lg sm:text-2xl lg:text-3xl text-white" />,
     position: "top-[36%] left-[20%]",
     delay: "3s",
     duration: "6.2s",
   },
   {
-    icon: <SiMongodb className="text-3xl text-green-500" />,
+    icon: <SiMongodb className="text-lg sm:text-2xl lg:text-3xl text-green-500" />,
     position: "top-[34%] right-[18%]",
     delay: "2s",
     duration: "2.2s",
   },
   {
-    icon: <SiJavascript className="text-3xl text-yellow-400" />,
+    icon: <SiJavascript className="text-lg sm:text-2xl lg:text-3xl text-yellow-400" />,
     position: "top-[62%] left-[10%]",
     delay: "6s",
     duration: "4.2s",
   },
   {
-    icon: <FaPython className="text-3xl text-blue-400" />,
+    icon: <FaPython className="text-lg sm:text-2xl lg:text-3xl text-blue-400" />,
     position: "top-[68%] left-[42%]",
     delay: "1s",
     duration: "5.2s",
   },
   {
-    icon: <SiTailwindcss className="text-3xl text-cyan-400" />,
+    icon: <SiTailwindcss className="text-lg sm:text-2xl lg:text-3xl text-cyan-400" />,
     position: "top-[60%] right-[12%]",
     delay: "0s",
     duration: "6.2s",
   },
   {
-    icon: <SiFastapi className="text-3xl text-emerald-400" />,
+    icon: <SiFastapi className="text-lg sm:text-2xl lg:text-3xl text-emerald-400" />,
     position: "bottom-[10%] left-[24%]",
     delay: "0s",
     duration: "4.2s",
   },
   {
-    icon: <FaGitAlt className="text-3xl text-orange-500" />,
+    icon: <FaGitAlt className="text-lg sm:text-2xl lg:text-3xl text-orange-500" />,
     position: "bottom-[10%] right-[22%]",
     delay: "0s",
     duration: "4.2s",
@@ -73,14 +73,14 @@ const skills = [
 const Skills = () => {
   return (
     <section id="skills" className="min-h-screen flex items-center">
-      <div className="mx-auto w-full max-w-7xl px-10 lg:px-16">
-        <div className="ml-32 lg:ml-40 grid items-center gap-20 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-16">
+        <div className="ml-0 lg:ml-40 grid items-center gap-10 lg:gap-20 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Left */}
           <div className="space-y-8">
             <p className="text-sm uppercase tracking-[0.35em] text-[#d29f22]">
               Skills
             </p>
-            <h2 className="text-5xl font-bold text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
               Technologies
               <br />
               I work with.
@@ -93,7 +93,7 @@ const Skills = () => {
           </div>
 
           {/* Right */}
-          <div className="relative h-[520px] overflow-hidden rounded-[36px] border border-[#d29f22]/20 bg-[#252628]/45 backdrop-blur-xl">
+          <div className="relative h-[340px] sm:h-[420px] lg:h-[520px] overflow-hidden rounded-[36px] border border-[#d29f22]/20 bg-[#252628]/45 backdrop-blur-xl">
             {/* Glow */}
             <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d29f22]/5 blur-[120px]" />
 
@@ -108,7 +108,7 @@ const Skills = () => {
               <div
                 key={index}
                 className={`absolute ${skill.position} float
-                flex h-16 w-16 items-center justify-center
+                flex h-11 w-11 sm:h-14 sm:w-14 lg:h-16 lg:w-16 items-center justify-center
                 rounded-full border border-[#d29f22]/25
                 bg-[#19171b]/70
                 shadow-lg

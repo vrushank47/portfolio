@@ -72,7 +72,7 @@ key={contact.title}
 href={contact.link}
 target="_blank"
 rel="noopener noreferrer"
-className="group rounded-2xl border border-transparent bg-[#252628]/45 p-6 backdrop-blur-xl transition-all duration-300 hover:border-[#d29f22]/50 hover:-translate-y-1"
+className="group relative overflow-hidden rounded-2xl border border-transparent bg-[#252628]/45 p-6 backdrop-blur-xl transition-all duration-300 hover:border-[#d29f22]/50 hover:-translate-y-1"
 >
 <div className="flex items-center gap-4 text-[#d29f22]">
 {/* Top Left */}
