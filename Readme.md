@@ -2,9 +2,11 @@
 
 A modern full-stack developer portfolio built with React, Express, MongoDB, and Tailwind CSS.
 
+🔗 **Live site:** [portfolio-8fyf.onrender.com](https://portfolio-8fyf.onrender.com/)
+
 ## ✨ Features
 
-- Modern responsive UI
+- Mobile-first, fully responsive UI
 - Dynamic project showcase
 - MongoDB database integration
 - Admin authentication
@@ -42,7 +44,8 @@ portfolio/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/portfolio.git
+git clone https://github.com/vrushank47/portfolio.git
+cd portfolio
 ```
 
 ### Frontend
@@ -63,7 +66,7 @@ npm run dev
 
 ## 📸 Preview
 
-Coming Soon
+Check out the live site: [portfolio-8fyf.onrender.com](https://portfolio-8fyf.onrender.com/)
 
 ## 👨‍💻 Author
 
