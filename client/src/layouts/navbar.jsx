@@ -16,7 +16,7 @@ const navItems = [
   {
     name: "Resume",
     icon: <FileText size={20} />,
-    href: "/vrushank100.pdf",
+    href: "/vrushank103.pdf",
     external: true,
   },
 ];
