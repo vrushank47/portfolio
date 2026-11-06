@@ -1,92 +1,129 @@
 import vrushankPhoto from "../../assets/images/vrushank.jpeg";
 
+/**
+ * Hero portrait frame.
+ * The whole wireframe layer is a single SVG (viewBox 470 x 598) so every
+ * line, node and crosshair stays perfectly aligned and scales with the frame.
+ * The photo is a normal <img> layered on top, centred on the SVG's ring.
+ */
+
+const GOLD = "#d29f22";
+const BLUE = "#3f78b5";
+
 const HeroImage = () => {
   return (
-    <div className="relative mx-auto flex h-[300px] w-[260px] items-center justify-center sm:h-[400px] sm:w-[320px] lg:ml-10 lg:h-[560px] lg:w-[440px]">
-      {/* Outer Gold Frame */}
-      <div className="absolute inset-0 rounded-[36px] border border-[#d29f22]/40" />
+    <div
+      className="relative mx-auto aspect-[470/598] w-full max-w-[470px] lg:mx-0 lg:justify-self-end"
+      style={{ width: "min(100%, 470px, calc((100svh - 4rem) * 0.786))" }}
+    >
+      <svg
+        viewBox="0 0 470 598"
+        fill="none"
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full overflow-visible [&_*]:[vector-effect:non-scaling-stroke]"
+      >
+        <defs>
+          {/* Honeycomb tile: pointy-top hexagons, r = 24 */}
+          <pattern id="hf-hex" width="41.569" height="72" patternUnits="userSpaceOnUse">
+            <path
+              d="M20.785 0 L41.569 12 V36 L20.785 48 L0 36 V12 Z M20.785 48 V72"
+              stroke={BLUE}
+              strokeOpacity="0.2"
+              strokeWidth="1"
+            />
+          </pattern>
 
-      {/* Second Frame */}
-      <div className="absolute inset-5 rounded-[30px] border border-[#d29f22]/20" />
+          <clipPath id="hf-inner-clip">
+            <rect x="22" y="22" width="426" height="554" rx="34" />
+          </clipPath>
 
-      {/* Fine decorative linework — tuned for the full-size frame, so only shown from lg up to avoid clipping/overlap on small screens */}
-      <div className="hidden lg:block">
-        {/* Vertical Line */}
-        <div className="absolute left-6 top-24 h-56 w-px bg-gradient-to-b from-transparent via-[#d29f22]/40 to-transparent" />
+          <filter id="hf-glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
 
-        {/* Vertical Line */}
-        <div className="absolute right-6 bottom-24 h-48 w-px bg-gradient-to-b from-transparent via-[#d29f22]/30 to-transparent" />
+          <radialGradient id="hf-halo" cx="50%" cy="50%" r="50%">
+            <stop offset="55%" stopColor={GOLD} stopOpacity="0.22" />
+            <stop offset="100%" stopColor={GOLD} stopOpacity="0" />
+          </radialGradient>
 
-        {/* Horizontal */}
-        <div className="absolute top-8 left-24 h-px w-36 bg-gradient-to-r from-[#d29f22]/40 to-transparent" />
+          <radialGradient id="hf-panel" cx="50%" cy="50%" r="70%">
+            <stop offset="0%" stopColor="#1a1a22" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="#0d0d12" stopOpacity="0.7" />
+          </radialGradient>
+        </defs>
 
-        {/* Horizontal */}
-        <div className="absolute bottom-10 right-24 h-px w-36 bg-gradient-to-l from-[#d29f22]/40 to-transparent" />
+        {/* ---- Panels --------------------------------------------------- */}
+        <rect x="1" y="1" width="468" height="596" rx="46" fill="url(#hf-panel)" stroke={GOLD} strokeOpacity="0.7" />
+        <rect x="22" y="22" width="426" height="554" rx="34" stroke={BLUE} strokeOpacity="0.75" />
 
-        {/* Accent Frame */}
-        <div className="absolute h-[400px] w-[310px] translate-x-5 translate-y-5 rounded-[24px] border border-[#d29f22]/15" />
+        {/* Hex mesh, clipped to the inner panel */}
+        <g clipPath="url(#hf-inner-clip)">
+          <rect x="22" y="22" width="426" height="554" fill="url(#hf-hex)" />
+        </g>
 
-        {/* Gold Accent Line */}
-        <div className="absolute left-20 top-48 h-1 w-10 bg-[#d29f22]" />
+        {/* ---- Halo + rings around the portrait -------------------------- */}
+        <circle cx="235" cy="299" r="200" fill="url(#hf-halo)" />
+        <circle cx="235" cy="299" r="181" stroke={BLUE} strokeOpacity="0.85" strokeWidth="1.25" />
+        <circle cx="235" cy="299" r="160" stroke={GOLD} strokeOpacity="0.22" />
 
-        {/* Gold Accent Line */}
-        <div className="absolute right-20 bottom-48 h-1 w-8 bg-[#d29f22]" />
+        {/* ---- Top: gold crosshair + blue diamond ------------------------ */}
+        <g stroke={GOLD} strokeOpacity="0.85">
+          <path d="M102 35 H234" />
+          <path d="M189 0 V53" />
+          <path d="M264 103 H352" strokeOpacity="0.55" />
+        </g>
+        <path d="M392 38 L440 86 L392 134 L344 86 Z" stroke={BLUE} strokeOpacity="0.85" />
 
-        {/* Gold Dot */}
-        <div className="absolute right-24 top-52 h-2 w-2 rounded-full bg-[#d29f22]" />
+        {/* ---- Left edge: node chain ------------------------------------- */}
+        <circle cx="6" cy="161" r="6" fill={GOLD} filter="url(#hf-glow)" />
+        <path d="M0 188 H52" stroke={GOLD} strokeOpacity="0.85" />
+        <path d="M27 188 V313" stroke={BLUE} strokeOpacity="0.55" />
+        <path d="M52 173 V220" stroke={BLUE} strokeOpacity="0.7" />
+        <circle cx="52" cy="173" r="3.5" fill={BLUE} />
+        <circle cx="52" cy="220" r="3.5" fill={BLUE} />
+        <path d="M86 207 H118" stroke={GOLD} strokeWidth="3" strokeOpacity="0.9" />
 
-        {/* Gold Dot */}
-        <div className="absolute left-24 bottom-40 h-2 w-2 rounded-full bg-[#d29f22]" />
+        {/* ---- Right of portrait: bracket + dash ------------------------- */}
+        <path d="M384 321 H402 a15 15 0 0 1 15 15 V460" stroke={GOLD} strokeOpacity="0.8" />
+        <path d="M417 410 H470" stroke={GOLD} strokeOpacity="0.8" />
+        <path d="M352 391 H384" stroke={GOLD} strokeWidth="4" strokeOpacity="0.95" />
+        <circle cx="448" cy="474" r="5" fill={GOLD} filter="url(#hf-glow)" />
 
-        {/* Left Cut */}
-        <div className="absolute left-0 top-44 h-px w-12 bg-[#d29f22]/40" />
+        {/* ---- Bottom-left: dot, square, blue tick ----------------------- */}
+        <circle cx="107" cy="423" r="5" fill={GOLD} filter="url(#hf-glow)" />
+        <rect
+          x="34"
+          y="495"
+          width="36"
+          height="36"
+          stroke={GOLD}
+          strokeOpacity="0.7"
+          transform="rotate(10 52 513)"
+        />
+        <path d="M104 495 H169" stroke={BLUE} strokeOpacity="0.8" />
+        <circle cx="106" cy="495" r="2.5" fill={BLUE} />
 
-        {/* Right Cut */}
-        <div className="absolute right-0 bottom-44 h-px w-12 bg-[#d29f22]/40" />
+        {/* ---- Bottom: crosshair + node ---------------------------------- */}
+        <path d="M228 554 H362" stroke={GOLD} strokeOpacity="0.85" />
+        <path d="M282 533 V598" stroke={GOLD} strokeOpacity="0.85" />
+        <circle cx="363" cy="555" r="4.5" fill={BLUE} filter="url(#hf-glow)" />
 
-        {/* Top Cut */}
-        <div className="absolute top-0 left-44 h-12 w-px bg-[#d29f22]/40" />
+       
+      </svg>
 
-        {/* Bottom Cut */}
-        <div className="absolute bottom-0 right-44 h-12 w-px bg-[#d29f22]/40" />
-
-        <div className="absolute top-24 right-28 h-px w-20 bg-[#d29f22]/25" />
-
-        <div className="absolute bottom-24 left-24 h-px w-16 bg-[#d29f22]/20" />
-
-        <div className="absolute top-40 left-12 h-12 w-px bg-[#d29f22]/20" />
-
-        <div className="absolute bottom-32 right-12 h-14 w-px bg-[#d29f22]/20" />
-
-        {/* Decorative Square */}
-        <div className="absolute top-12 right-10 h-16 w-16 border border-[#d29f22]/20 rotate-45" />
-
-        {/* Small Square */}
-        <div className="absolute bottom-16 left-8 h-8 w-8 border border-[#d29f22]/30 rotate-12" />
-
-        {/* Circle */}
-        <div className="absolute top-36 left-0 h-3 w-3 rounded-full bg-[#d29f22]/60" />
-
-        {/* Circle */}
-        <div className="absolute bottom-28 right-4 h-2 w-2 rounded-full bg-[#d29f22]" />
-      </div>
-
-      <div className="relative flex items-center justify-center">
-        {/* Soft Glow */}
-        <div className="absolute h-[200px] w-[200px] rounded-full bg-[#d29f22]/5 blur-3xl sm:h-[260px] sm:w-[260px] lg:h-[300px] lg:w-[300px]" />
-        <div className="absolute h-[230px] w-[230px] rounded-full border border-[#d29f22]/10 sm:h-[300px] sm:w-[300px] lg:h-[340px] lg:w-[340px]" />
-        <div className="absolute hidden h-[420px] w-[420px] rounded-full border border-[#d29f22]/5 lg:block" />
-
-        {/* Portrait */}
-        <div className="relative h-[190px] w-[190px] overflow-hidden rounded-full border border-[#d29f22]/30 bg-[#252628]/60 backdrop-blur-sm sm:h-[240px] sm:w-[240px] lg:h-[280px] lg:w-[280px]">
-          <img
-            src={vrushankPhoto}
-            alt="Vrushank Saravade"
-            className="h-full w-full object-cover object-[210%_90%]"
-          />
-          {/* subtle gold tint over the photo to match the theme */}
-          <div className="pointer-events-none absolute inset-0 bg-[#d29f22]/5 mix-blend-overlay" />
-        </div>
+      {/* Portrait */}
+      <div className="absolute left-1/2 top-1/2 aspect-square w-[63.8%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-2 border-[#d29f22]/60 bg-[#252628] shadow-[0_0_48px_rgba(210,159,34,0.28)]">
+        <img
+          src={vrushankPhoto}
+          alt="Vrushank Saravade"
+          className="h-full w-full object-cover object-[210%_90%]"
+        />
+        {/* subtle gold tint over the photo to match the theme */}
+        <div className="pointer-events-none absolute inset-0 bg-[#d29f22]/5 mix-blend-overlay" />
       </div>
     </div>
   );

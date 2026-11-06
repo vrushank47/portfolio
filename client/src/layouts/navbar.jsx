@@ -26,7 +26,7 @@ const Navbar = () => {
     <>
       {/* Desktop Navbar */}
       <nav className="fixed left-12 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
-        <div className="w-40 rounded-[32px] border border-[#d29f22]/50 bg-[#252628]/55 p-4 backdrop-blur-2xl shadow-2xl">
+        <div className="w-[170px] rounded-[32px] border border-[#d29f22]/60 bg-[#252628]/55 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_30px_rgba(210,159,34,0.06)] backdrop-blur-2xl">
           <ul className="space-y-2">
             {navItems.map((item, index) => (
               <li key={item.name}>
@@ -37,14 +37,14 @@ const Navbar = () => {
                     rel: "noopener noreferrer",
                     download: true,
                   })}
-                  className={`flex items-center gap-3 rounded-full px-3 py-2.5 transition-all duration-300 ${
+                  className={`flex items-center gap-3.5 rounded-full px-3 py-2.5 transition-all duration-300 ${
                     index === 0
-                      ? "bg-[#d29f22]/20 text-[#d29f22]"
+                      ? "bg-[#d29f22]/20 text-[#d29f22] shadow-[0_0_22px_rgba(210,159,34,0.25)]"
                       : "text-gray-300 hover:bg-[#d29f22]/10 hover:text-[#d29f22]"
                   }`}
                 >
                   {item.icon}
-                  <span className="text-sm">{item.name}</span>
+                  <span className="text-base">{item.name}</span>
                 </a>
               </li>
             ))}

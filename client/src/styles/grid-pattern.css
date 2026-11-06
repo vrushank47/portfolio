@@ -1,0 +1,69 @@
+/* ==========================================================================
+   Grid background pattern
+   Used by src/layouts/background.jsx
+   Everything is driven by CSS variables so it scales with the viewport and
+   can be re-tuned in one place.
+   ========================================================================== */
+
+:root {
+  --grid-bg: #121116;          /* OLED / charcoal slate base            */
+  --grid-size: 64px;           /* cell size                             */
+  --grid-line: rgba(255, 255, 255, 0.085);
+  --grid-node: rgba(210, 159, 34, 0.35);   /* micro-dots on intersections */
+  --grid-glow-gold: rgba(210, 159, 34, 0.11);
+  --grid-glow-crimson: rgba(120, 20, 52, 0.16);
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -50;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--grid-bg);
+}
+
+/* Ambient colour: warm gold top-left, crimson bottom-right */
+.grid-bg__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 0% 0%, var(--grid-glow-gold), transparent 70%),
+    radial-gradient(55% 55% at 100% 100%, var(--grid-glow-crimson), transparent 70%);
+}
+
+/* Thin grid lines */
+.grid-bg__lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+}
+
+/* Micro-dots sitting exactly on the line intersections.
+   A radial dot is centred in its tile, so we shift the layer by half a tile. */
+.grid-bg__nodes {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    var(--grid-node) 0,
+    var(--grid-node) 1.25px,
+    transparent 1.75px
+  );
+  background-size: var(--grid-size) var(--grid-size);
+  background-position: calc(var(--grid-size) / -2 + 0.5px) calc(var(--grid-size) / -2 + 0.5px);
+  /* only show nodes in the middle of the page, fading out to the edges */
+  -webkit-mask-image: radial-gradient(ellipse at 55% 50%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 55% 50%, #000 0%, transparent 75%);
+  opacity: 0.7;
+}
+
+/* Edge vignette to keep the corners deep and the content area readable */
+.grid-bg__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(0, 0, 0, 0.45) 100%);
+}
